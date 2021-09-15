@@ -3,5 +3,6 @@ cc_library(
     srcs = [
         "@__bazelrio_edu_wpi_first_ni-libraries_netcomm_shared//:all",
     ],
+    linkstatic = 1,
     visibility = ["//visibility:public"],
 )

@@ -16,6 +16,32 @@ cc_library_headers = """cc_library(
 )
 """
 
+def __cross_shared_library(
+        artifact_base_name,
+        version,
+        sub_url,
+        platform_libraries,
+        maven_url = "https://frcmaven.wpi.edu/artifactory/release"):
+    sub_url_camel = sub_url.replace("/", "_")
+
+    for platform, platform_sha in platform_libraries:
+        artifact_name = "__bazelrio_{}_{}_shared".format(sub_url_camel, platform)
+        url = "{maven_url}/{sub_url}/{artifact_base_name}/{version}/{artifact_base_name}-{version}-{platform}.zip".format(
+            maven_url = maven_url,
+            sub_url = sub_url,
+            artifact_base_name = artifact_base_name,
+            version = version,
+            platform = platform,
+        )
+
+        maybe(
+            http_archive,
+            artifact_name,
+            url = url,
+            sha256 = platform_sha,
+            build_file_content = filegroup_all,
+        )
+
 def setup_bazelrio_dependencies():
     # Other bazel rules
     maybe(
@@ -90,44 +116,66 @@ def setup_bazelrio_dependencies():
     )
 
     # Shared libraries
-    maybe(
-        http_archive,
-        "__bazelrio_edu_wpi_first_wpilibc_shared",
-        url = "https://frcmaven.wpi.edu/artifactory/release/edu/wpi/first/wpilibc/wpilibc-cpp/2021.3.1/wpilibc-cpp-2021.3.1-linuxathena.zip",
-        sha256 = "637dc07b7a3e99b4a9ffbb73ff763e61baa379ac6dce56c8bd5ffbc8d91d722d",
-        build_file_content = filegroup_all,
+    allwpilib_version = "2021.3.1"
+
+    __cross_shared_library(
+        artifact_base_name = "wpilibc-cpp",
+        version = allwpilib_version,
+        sub_url = "edu/wpi/first/wpilibc",
+        platform_libraries = [
+            ("windowsx86-64", "b3f3e6d4958a8f4b72e49df6658f5f3fcdc5114537b49f26263b04cc2c94edf4"),
+            ("linuxx86-64", "8f4cc72163713512fcaddfc9f3f1790376659f6aaa2ed55c47155ca0b52a7169"),
+            ("osxx86-64", "9a0a8ac63c4d645d938e37ca4da0a040fc48a38e6d5f8689aa9c8eddec024600"),
+            ("linuxathena", "637dc07b7a3e99b4a9ffbb73ff763e61baa379ac6dce56c8bd5ffbc8d91d722d"),
+        ],
     )
 
-    maybe(
-        http_archive,
-        "__bazelrio_edu_wpi_first_hal_shared",
-        url = "https://frcmaven.wpi.edu/artifactory/release/edu/wpi/first/hal/hal-cpp/2021.3.1/hal-cpp-2021.3.1-linuxathena.zip",
-        sha256 = "e9de32abe3739697a3a92963c9eca4bf8755edfb0f11ac95e22d0190a3185f56",
-        build_file_content = filegroup_all,
+    __cross_shared_library(
+        artifact_base_name = "hal-cpp",
+        version = allwpilib_version,
+        sub_url = "edu/wpi/first/hal",
+        platform_libraries = [
+            ("windowsx86-64", "18d860d1be5dfcf104f9609f9bb2af666fda13e8d3608ef9b9e890b5c4c56785"),
+            ("linuxx86-64", "48ca6f22deb800170c801944531557c8d109be4501418c719349519405ae6cc2"),
+            ("osxx86-64", "46f76a6ba82f395e19ba48c12c56b1d864b03f46498a0f42b6a15fe12d3aaa6a"),
+            ("linuxathena", "e9de32abe3739697a3a92963c9eca4bf8755edfb0f11ac95e22d0190a3185f56"),
+        ],
     )
 
-    maybe(
-        http_archive,
-        "__bazelrio_edu_wpi_first_wpiutil_shared",
-        url = "https://frcmaven.wpi.edu/artifactory/release/edu/wpi/first/wpiutil/wpiutil-cpp/2021.3.1/wpiutil-cpp-2021.3.1-linuxathena.zip",
-        sha256 = "ad48bae20f42850938a1758c9f82e54c5cb5e286ad0b09adb701d700bd7f8ec8",
-        build_file_content = filegroup_all,
+    __cross_shared_library(
+        artifact_base_name = "wpiutil-cpp",
+        version = allwpilib_version,
+        sub_url = "edu/wpi/first/wpiutil",
+        platform_libraries = [
+            ("windowsx86-64", "5e85e0a32ed520c1ea075087b3701769f2007fe8a9385831b1d947f70179cf8f"),
+            ("linuxx86-64", "4a20ec638981025c0e41678ac7cea691d5a40121987b1309e6907255636d02cf"),
+            ("osxx86-64", "09c7914e5fcf4b26967e0bddb501c79d054de276a5724a9089b0e04d9e13e640"),
+            ("linuxathena", "ad48bae20f42850938a1758c9f82e54c5cb5e286ad0b09adb701d700bd7f8ec8"),
+        ],
     )
 
-    maybe(
-        http_archive,
-        "__bazelrio_edu_wpi_first_ntcore_shared",
-        url = "https://frcmaven.wpi.edu/artifactory/release/edu/wpi/first/ntcore/ntcore-cpp/2021.3.1/ntcore-cpp-2021.3.1-linuxathena.zip",
-        sha256 = "dabb3d971cf0aee46d4b104d38abd47cc36219b025b299bfb9fea82e53deacc7",
-        build_file_content = filegroup_all,
+    __cross_shared_library(
+        artifact_base_name = "ntcore-cpp",
+        version = allwpilib_version,
+        sub_url = "edu/wpi/first/ntcore",
+        platform_libraries = [
+            ("windowsx86-64", "cd69aba9cc0b16fda738dcde53b1c8c138c616fd4af2e2de1877f66973fcc6d3"),
+            ("linuxx86-64", "d6aedae1639db0fd538f7c519b97cf45441a6ec7c8220c3f564d7c3a7de71294"),
+            ("osxx86-64", "8daf5d2b4cf3e16db6b3ad3a309aade6315b9458abeb40b94d59cbb21ddac087"),
+            ("linuxathena", "dabb3d971cf0aee46d4b104d38abd47cc36219b025b299bfb9fea82e53deacc7"),
+        ],
     )
 
-    maybe(
-        http_archive,
-        "__bazelrio_edu_wpi_first_wpimath_shared",
-        url = "https://frcmaven.wpi.edu/artifactory/release/edu/wpi/first/wpimath/wpimath-cpp/2021.3.1/wpimath-cpp-2021.3.1-linuxathena.zip",
-        sha256 = "172d57588b8b7c26829fdc5a1ffaa938f65552a5e2f7cc28a510705f881de459",
-        build_file_content = filegroup_all,
+    __cross_shared_library(
+        artifact_base_name = "wpimath-cpp",
+        version = allwpilib_version,
+        sub_url = "edu/wpi/first/wpimath",
+        platform_libraries = [
+            ("windowsx86-64", "2ec3dcf69a2b0500aea1d5037aa79912a252c5c7f8aefd113c974e1559d88cf9"),
+            ("linuxx86-64", "d5edb77e3ed15df710c7895636190ee2f89e47429f2925e015bd7b0025af4612"),
+            ("osxx86-64", "4d61ca32079050b825d5ee543a8293f52fb0cfca0d71d7c4bdd3f58cc689b73d"),
+            ("linuxathena", "172d57588b8b7c26829fdc5a1ffaa938f65552a5e2f7cc28a510705f881de459"),
+        ],
     )
 
     maybe(
