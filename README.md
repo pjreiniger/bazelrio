@@ -7,9 +7,9 @@ You can include bazelrio in your project like so:
 ```
 http_archive(
     name = "bazelrio",
-    url = "https://github.com/connorworley/bazelrio/archive/0c91c40c0aedf4bf9c5c78cefb92dc8301add16d.zip",
-    sha256 = "7e9b01e38097a1be1a43ae5d56e9215aa790fa13a81c92ef930ed67ceccdb5ab",
-    strip_prefix = "bazelrio-0c91c40c0aedf4bf9c5c78cefb92dc8301add16d/bazelrio",
+    url = "https://github.com/connorworley/bazelrio/archive/404b9eac65eba111bf30d81c1ccb0e3526ae514a.zip",
+    sha256 = "b10faae21e1e3820e1d870d0a54dccad318694817d0fee5c3bb41a47b2bebe67",
+    strip_prefix = "bazelrio-404b9eac65eba111bf30d81c1ccb0e3526ae514a/bazelrio",
 )
 
 load("@bazelrio//:deps.bzl", "setup_bazelrio_dependencies")
