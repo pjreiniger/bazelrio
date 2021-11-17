@@ -58,13 +58,25 @@ def robot_cc_binary(name, team_number, srcs = [], hdrs = [], deps = [], halsim_c
                 **kwargs
             )
 
+    deploy_binary(
+        name,
+        dynamic_library_source = name + "-lib",
+        binary = name,
+        team_number = team_number,
+    )
+    
+
+def deploy_binary(name, dynamic_library_source, binary, team_number, robot_command = None):
     discover_dynamic_deps_task_name = name + ".discover_dynamic_deps"
     discover_dynamic_dependencies(
         name = discover_dynamic_deps_task_name,
-        deps = [name + "-lib"],
+        deps = [dynamic_library_source],
     )
 
     base_deploy_command = "$(location @bazelrio//scripts/deploy) --robot_binary $(location {}) --team_number {} --dynamic_libraries $(locations {})".format(name, team_number, discover_dynamic_deps_task_name)
+    if robot_command:
+        base_deploy_command += "--robot_command {} ".format(robot_command)
+
     native.genrule(
         name = "{}.deploy".format(name),
         srcs = [":{}".format(name), discover_dynamic_deps_task_name],
@@ -73,4 +85,11 @@ def robot_cc_binary(name, team_number, srcs = [], hdrs = [], deps = [], halsim_c
         executable = True,
         cmd = "echo " + base_deploy_command + " > $@",
         cmd_bat = "echo @echo off > $@ && echo " + base_deploy_command + " >> $@",
+    )
+
+def robot_java_binary(name, main_class, team_number, **kwargs):
+    native.java_binary(
+        name = name,
+        main_class = main_class,
+        **kwargs
     )
