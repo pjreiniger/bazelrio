@@ -5,6 +5,11 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <units/length.h>
 
+#include "ctre/phoenix/motorcontrol/can/WPI_TalonFX.h"
+#include "rev/ColorSensorV3.h"
+#include "rev/CANSparkMax.h"
+#include "AHRS.h"
+
 #include <wpi/math>
 
 DriveTrain::DriveTrain()
@@ -30,6 +35,27 @@ DriveTrain::DriveTrain()
   AddChild("Left Encoder", &m_leftEncoder);
   AddChild("Right Encoder", &m_rightEncoder);
   AddChild("Gyro", &m_gyro);
+
+  {
+    ctre::phoenix::motorcontrol::can::WPI_TalonFX temp{1};
+    std::cout << "Talon: " << temp.Get() << std::endl;
+  }
+  
+  {
+    rev::ColorSensorV3 temp{frc::I2C::kOnboard};
+    std::cout << "Color Sensor: " << temp.GetIR() << std::endl;
+  }
+  
+  
+  {
+    rev::CANSparkMax temp{2, rev::CANSparkMax::MotorType::kBrushless};
+    std::cout << "Rev: " << temp.Get() << std::endl;
+  }
+
+  // {
+  //   AHRS temp{frc::I2C::kMXP};
+  //   std::cout << "Navx: " << temp.GetAngle() << std::endl;
+  // }
 }
 
 void DriveTrain::Log() {

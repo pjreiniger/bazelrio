@@ -75,6 +75,7 @@ def _impl(ctx):
                                     "-lstdc++",
                                     "-lpthread",
                                     "-lm",
+                                    "-ldl",
                                 ],
                             ),
                         ],

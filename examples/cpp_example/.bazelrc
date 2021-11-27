@@ -28,3 +28,4 @@ build:for-roborio --platforms=@bazelrio//platforms/roborio
 
 # For Windows
 build:for-windows --copt=/std:c++17
+build:for-windows --linkopt=/ignore:4099
