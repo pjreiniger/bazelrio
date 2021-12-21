@@ -41,7 +41,7 @@ def setup_bazelrio_dependencies(
     setup_toolchains_dependencies(version = toolchain_versions)
     setup_wpilib_dependencies(version = wpilib_version)
     setup_ni_dependencies(version = ni_version)
-    setup_sparkmax_dependencies(version = sparkmax_version)
+    # setup_sparkmax_dependencies(version = sparkmax_version)
     setup_colorsensor_dependencies(version = colorsensor_version)
     setup_revlib_dependencies(version = revlib_version)
     setup_phoenix_dependencies(version = phoenix_version)
