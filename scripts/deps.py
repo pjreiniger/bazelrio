@@ -4,7 +4,7 @@ import tempfile
 import hashlib
 from urllib.request import urlopen
 
-CACHE_DIRECTORY = os.path.join(tempfile.gettempdir(), "bazelrio_cache")
+CACHE_DIRECTORY = r"C:\Users\PJ\MY_CACHES\bazelrio_cache" # os.path.join(tempfile.gettempdir(), "bazelrio_cache")
 
 
 def _download_and_cache(cached_file, url, fail_on_miss):
