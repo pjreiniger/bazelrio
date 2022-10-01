@@ -19,14 +19,14 @@ def setup_bazelrio_dependencies(
         toolchain_versions = "2022-1",
         wpilib_version = "2022.4.1",
         ni_version = "2022.4.0",
-        opencv_version = "4.5.2-1",
+        opencv_version = "4.5.5-3",
         sparkmax_version = "1.5.4",
         colorsensor_version = "1.2.0",
         revlib_version = "2022.1.1",
         phoenix_version = "5.21.2",
         navx_version = "4.0.442",
-        imgui_version = "1.86-1",
-        libssh_version = "0.95-1"):
+        imgui_version = "1.88-4",
+        libssh_version = "0.95-3"):
     # Other bazel rules
     maybe(
         http_archive,

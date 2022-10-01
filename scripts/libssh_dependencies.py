@@ -4,7 +4,7 @@ from platforms import default_native_static_platforms
 
 def libssh_dependencies():
     MAVEN_URL = "https://frcmaven.wpi.edu/release"
-    VERSIONS = [("frc2022", "0.95-1")]
+    VERSIONS = [("frc2022", "0.95-1"), ("frc2023", "0.95-3")]
     DEP_NAME = "libssh"
 
     dependencies = {DEP_NAME: []}
