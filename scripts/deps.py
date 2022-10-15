@@ -4,11 +4,13 @@ import tempfile
 import hashlib
 from urllib.request import urlopen
 
-CACHE_DIRECTORY = r"C:\Users\PJ\MY_CACHES\bazelrio_cache" # os.path.join(tempfile.gettempdir(), "bazelrio_cache")
+# CACHE_DIRECTORY = r"C:\Users\PJ\MY_CACHES\bazelrio_cache" # os.path.join(tempfile.gettempdir(), "bazelrio_cache")
+CACHE_DIRECTORY = os.path.join(tempfile.gettempdir(), "bazelrio_cache")
 
 
 def _download_and_cache(cached_file, url, fail_on_miss):
     if not os.path.exists(CACHE_DIRECTORY):
+        print(f"Created cache directory at {CACHE_DIRECTORY}")
         os.mkdir(CACHE_DIRECTORY)
 
     print(f"Cache miss for {url}")
@@ -142,7 +144,12 @@ class MavenDependencyGroup:
 
         self.underscore_version = version.replace(".", "_").replace("-", "_")
 
-    def add_cpp_dep(self, group_id, artifact_name, resources):
+    def add_cpp_dep(self, group_id, artifact_name, resources, fail_on_hash_miss=None):
+        if fail_on_hash_miss is not None:
+            if fail_on_hash_miss != self.fail_on_hash_miss:
+                print(f"Overriding fail on hash miss for {artifact_name}! Originally {self.fail_on_hash_miss}, overriding with {fail_on_hash_miss}")
+            fail_on_hash_miss = self.fail_on_hash_miss
+
         self._cpp_deps.append(
             CppDependency(
                 resources=resources,
