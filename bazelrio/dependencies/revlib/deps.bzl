@@ -9,5 +9,8 @@ def setup_revlib_dependencies(version):
         setup_revlib_2022_1_0_dependencies()
     elif version == "2022.1.1":
         setup_revlib_2022_1_1_dependencies()
+    elif version == None:
+        print("Not setting up dependencies for revlib")
+        pass
     else:
         fail("Unsupported version '{}'".format(version))

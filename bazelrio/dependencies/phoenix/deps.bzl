@@ -18,5 +18,8 @@ def setup_phoenix_dependencies(version):
         setup_phoenix_5_21_2_dependencies()
     elif version == "5.21.3":
         setup_phoenix_5_21_3_dependencies()
+    elif version == None:
+        print("Not setting up dependencies for phoenix")
+        pass
     else:
         fail("Unsupported version '{}'".format(version))

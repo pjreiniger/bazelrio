@@ -70,7 +70,6 @@ def generate_dependencies():
     dependencies.update(get_ni_dependencies())
     dependencies.update(opencv_dependencies())
     dependencies.update(vendordep_dependencies(os.path.join(SCRIPT_DIR, "vendordeps")))
-    dependencies.update(opencv_dependencies())
     dependencies.update(libssh_dependencies())
     dependencies.update(imgui_dependencies())
 

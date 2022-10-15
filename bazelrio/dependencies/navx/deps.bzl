@@ -12,5 +12,8 @@ def setup_navx_dependencies(version):
         setup_navx_4_0_442_dependencies()
     elif version == "4.0.447":
         setup_navx_4_0_447_dependencies()
+    elif version == None:
+        print("Not setting up dependencies for navx")
+        pass
     else:
         fail("Unsupported version '{}'".format(version))

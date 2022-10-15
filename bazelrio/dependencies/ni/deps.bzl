@@ -12,5 +12,8 @@ def setup_ni_dependencies(version):
         setup_ni_2022_2_3_dependencies()
     elif version == "2022.4.0":
         setup_ni_2022_4_0_dependencies()
+    elif version == None:
+        print("Not setting up dependencies for ni")
+        pass
     else:
         fail("Unsupported version '{}'".format(version))

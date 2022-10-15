@@ -6,5 +6,8 @@ def setup_libssh_dependencies(version):
         setup_libssh_0_95_1_dependencies()
     elif version == "0.95-3":
         setup_libssh_0_95_3_dependencies()
+    elif version == None:
+        print("Not setting up dependencies for libssh")
+        pass
     else:
         fail("Unsupported version '{}'".format(version))
