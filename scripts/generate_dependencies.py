@@ -65,20 +65,24 @@ def generate_dependencies():
     from libssh_dependencies import libssh_dependencies
     from imgui_dependencies import imgui_dependencies
 
-    dependencies = {}
-    dependencies.update(get_wpilib_dependencies())
-    dependencies.update(get_ni_dependencies())
-    dependencies.update(opencv_dependencies())
-    dependencies.update(vendordep_dependencies(os.path.join(SCRIPT_DIR, "vendordeps")))
-    dependencies.update(libssh_dependencies())
-    dependencies.update(imgui_dependencies())
+    try:
 
-    for maven_dependencies in dependencies.values():
-        generate_toplevel_dependency(maven_dependencies)
+        dependencies = {}
+        dependencies.update(get_wpilib_dependencies())
+        dependencies.update(get_ni_dependencies())
+        dependencies.update(opencv_dependencies())
+        dependencies.update(vendordep_dependencies(os.path.join(SCRIPT_DIR, "vendordeps")))
+        dependencies.update(libssh_dependencies())
+        dependencies.update(imgui_dependencies())
 
-        for maven_dependency in maven_dependencies:
-            generate_single_version_dependency(maven_dependency)
+        for maven_dependencies in dependencies.values():
+            generate_toplevel_dependency(maven_dependencies)
 
+            for maven_dependency in maven_dependencies:
+                generate_single_version_dependency(maven_dependency)
+    except Exception as e:
+        print(e)
+        pass
 
 if __name__ == "__main__":
     generate_dependencies()
