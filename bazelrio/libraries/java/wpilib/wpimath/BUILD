@@ -5,5 +5,8 @@ java_import(
     deps = [
         "//libraries/cpp/wpilib/wpimath:jni",
         "//libraries/java/wpilib/wpiutil",
+        "@__bazelrio_maven_deps//:com_fasterxml_jackson_core_jackson_annotations",
+        "@__bazelrio_maven_deps//:com_fasterxml_jackson_core_jackson_core",
+        "@__bazelrio_maven_deps//:com_fasterxml_jackson_core_jackson_databind",
     ],
 )
