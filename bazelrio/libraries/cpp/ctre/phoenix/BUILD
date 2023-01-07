@@ -21,7 +21,7 @@ cc_library(
     ] + select({
         "@bazel_tools//src/conditions:windows": [lib.format("windowsx86-64") for lib in CC_NATIVE_LIBS],
         "@bazel_tools//src/conditions:linux_x86_64": [lib.format("linuxx86-64") for lib in CC_NATIVE_LIBS],
-        "@bazel_tools//src/conditions:darwin": [lib.format("osxx86-64") for lib in CC_NATIVE_LIBS],
+        "@bazel_tools//src/conditions:darwin": [lib.format("osxuniversal") for lib in CC_NATIVE_LIBS],
         "//constraints/is_roborio:roborio": [
             "@__bazelrio_com_ctre_phoenix_wpiapi-cpp_linuxathena//:shared_libs",
             "@__bazelrio_com_ctre_phoenix_cci_linuxathena//:shared_libs",
@@ -45,7 +45,7 @@ cc_library(
     deps = select({
         "@bazel_tools//src/conditions:windows": [lib.format("windowsx86-64") for lib in JNI_NATIVE_LIBS],
         "@bazel_tools//src/conditions:linux_x86_64": [lib.format("linuxx86-64") for lib in JNI_NATIVE_LIBS],
-        "@bazel_tools//src/conditions:darwin": [lib.format("osxx86-64") for lib in JNI_NATIVE_LIBS],
+        "@bazel_tools//src/conditions:darwin": [lib.format("osxuniversal") for lib in JNI_NATIVE_LIBS],
         "//constraints/is_roborio:roborio": [
             "@__bazelrio_com_ctre_phoenix_cci_linuxathena//:shared_libs",
         ],
