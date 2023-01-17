@@ -16,7 +16,7 @@ load("@bazelrio//:defs.bzl", "setup_bazelrio")
 setup_bazelrio()
 
 # Kotlin
-rules_kotlin_version = "1.7.1"
+rules_kotlin_version = "v1.7.1"
 
 rules_kotlin_sha = "fd92a98bd8a8f0e1cdcb490b93f5acef1f1727ed992571232d33de42395ca9b3"
 
