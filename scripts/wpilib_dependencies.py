@@ -48,12 +48,13 @@ def _executable_tool(maven_dep, artifact_name, group_id="edu.wpi.first.tools", n
 def get_wpilib_dependencies():
 
     MAVEN_URL = "https://frcmaven.wpi.edu/release"
-    VERSIONS = ["2023.1.1", "2023.2.1", "2023.3.2"]
+    VERSIONS = ["2023.1.1", "2023.2.1", "2023.3.2", "2023.4.1"]
     DEP_NAME = "wpilib"
 
     dependencies = {DEP_NAME: []}
 
     dual_language = [
+        "apriltag",
         "hal",
         "wpiutil",
         "wpinet",
@@ -80,6 +81,7 @@ def get_wpilib_dependencies():
 
         _cpp_dependency(maven_dep, "wpilibc")
         _java_dependency(maven_dep, "wpilibj")
+        _java_dependency(maven_dep, "fieldImages")
 
         for artifact in dual_language:
             _cpp_dependency(maven_dep, artifact)

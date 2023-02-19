@@ -1,5 +1,6 @@
 load("//dependencies/phoenix/5_30_2:deps.bzl", "setup_phoenix_5_30_2_dependencies")
 load("//dependencies/phoenix/5_30_3_23_0_4:deps.bzl", "setup_phoenix_5_30_3_23_0_4_dependencies")
+load("//dependencies/phoenix/5_30_4_23_0_8:deps.bzl", "setup_phoenix_5_30_4_23_0_8_dependencies")
 load("//dependencies/phoenix/5_30_4:deps.bzl", "setup_phoenix_5_30_4_dependencies")
 
 def setup_phoenix_dependencies(version):
@@ -9,6 +10,8 @@ def setup_phoenix_dependencies(version):
         setup_phoenix_5_30_2_dependencies()
     elif version == "5.30.3_23.0.4":
         setup_phoenix_5_30_3_23_0_4_dependencies()
+    elif version == "5.30.4_23.0.8":
+        setup_phoenix_5_30_4_23_0_8_dependencies()
     elif version == "5.30.4":
         setup_phoenix_5_30_4_dependencies()
     else:

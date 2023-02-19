@@ -104,6 +104,104 @@ def setup_wpilib_2023_1_1_dependencies():
     )
     maybe(
         http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_linuxathena",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-linuxathena.zip",
+        sha256 = "8bf79647e76881259233f2fc9e785397a53a9ffec89b961ea67d081b5d535682",
+        build_file_content = cc_library_shared,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_linuxathenastatic",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-linuxathenastatic.zip",
+        sha256 = "bbe371a5d58482c545ba1eb537191a399f2545df6aeeb25d14a9dff6ea9d5e5e",
+        build_file_content = cc_library_static,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_linuxarm32",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-linuxarm32.zip",
+        sha256 = "2012da16d2e150f04d0c6f289134342679acff937baa5190e06c5893d01acfe4",
+        build_file_content = cc_library_shared,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_linuxarm64",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-linuxarm64.zip",
+        sha256 = "5db2c843038b08b83ee0c03337e627740f88758fb0d24c795750713c85d17f83",
+        build_file_content = cc_library_shared,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_linuxx86-64",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-linuxx86-64.zip",
+        sha256 = "da9d0b56de03a9e4cbfe8ba6cc1f7560b23ca8cc2ebf198f529e1eb95a1205af",
+        build_file_content = cc_library_shared,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_osxuniversal",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-osxuniversal.zip",
+        sha256 = "b585f69d96ab4f42181d28daf1b1a0477b1ebc19688a3174eb3933617d303456",
+        build_file_content = cc_library_shared,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_windowsx86-64",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-windowsx86-64.zip",
+        sha256 = "a8996b6d341a78914d78536bc9af577c109c88d14bf31cc1351f63f43119589e",
+        build_file_content = cc_library_shared,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_linuxarm32static",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-linuxarm32static.zip",
+        sha256 = "301104015024c7cc54307bbfbecd1768fcf5b3a857e94226cf5f7722c9f30889",
+        build_file_content = cc_library_static,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_linuxarm64static",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-linuxarm64static.zip",
+        sha256 = "470aae0f827bc9ed676551406d36f1dfe6b22b6f8b7579bfb09986e955d9f20f",
+        build_file_content = cc_library_static,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_linuxx86-64static",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-linuxx86-64static.zip",
+        sha256 = "282f5edada5b10eb0177cf3aeefb64754aeb56c9069107558af9e8f7d44970f0",
+        build_file_content = cc_library_static,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_osxuniversalstatic",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-osxuniversalstatic.zip",
+        sha256 = "660263c88cc657892dae37305dd0e723b40805079a9ca73d6bc12e6ad36f221c",
+        build_file_content = cc_library_static,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_windowsx86-64static",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-windowsx86-64static.zip",
+        sha256 = "53c089d976fc4a6f59fb94d0a353e9b28cae7f6299bcdb1eef0eb5e834799e8a",
+        build_file_content = cc_library_static,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_headers",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-headers.zip",
+        sha256 = "07edca2980e8f59e9706ac5977434f1960b1b6a73c50dc01e0dd1ed1f9b82cef",
+        build_file_content = cc_library_headers,
+    )
+    maybe(
+        http_archive,
+        "__bazelrio_edu_wpi_first_apriltag_apriltag-cpp_sources",
+        url = "https://frcmaven.wpi.edu/release/edu/wpi/first/apriltag/apriltag-cpp/2023.1.1/apriltag-cpp-2023.1.1-sources.zip",
+        sha256 = "f657e0154adbd93ecf6e7b204c9a759bfcbcb3835a644416d7d86349c632c717",
+        build_file_content = cc_library_sources,
+    )
+    maybe(
+        http_archive,
         "__bazelrio_edu_wpi_first_hal_hal-cpp_linuxathena",
         url = "https://frcmaven.wpi.edu/release/edu/wpi/first/hal/hal-cpp/2023.1.1/hal-cpp-2023.1.1-linuxathena.zip",
         sha256 = "d5dec6332ccd5655bfc956fb49531183c7befcb59d785c02fa27b5988c4e7e86",
@@ -1038,6 +1136,20 @@ def setup_wpilib_2023_1_1_dependencies():
         name = "__bazelrio_edu_wpi_first_wpilibj_wpilibj-java",
         artifact = "edu.wpi.first.wpilibj:wpilibj-java:2023.1.1",
         artifact_sha256 = "6f934cdd7d9f03c6181ffe09a0d4bbbafa400f64bf521209d883c74a291fd8d7",
+        server_urls = ["https://frcmaven.wpi.edu/release"],
+    )
+    maybe(
+        jvm_maven_import_external,
+        name = "__bazelrio_edu_wpi_first_fieldimages_fieldimages-java",
+        artifact = "edu.wpi.first.fieldImages:fieldImages-java:2023.1.1",
+        artifact_sha256 = "3f31d40c6d62fcdcca045eaa7db2d5ecc93254e19c69316b133ec12433d31e4f",
+        server_urls = ["https://frcmaven.wpi.edu/release"],
+    )
+    maybe(
+        jvm_maven_import_external,
+        name = "__bazelrio_edu_wpi_first_apriltag_apriltag-java",
+        artifact = "edu.wpi.first.apriltag:apriltag-java:2023.1.1",
+        artifact_sha256 = "b216449a68e77683774e9fa1060e597ce9e75ec293b73f70c85fac585b354860",
         server_urls = ["https://frcmaven.wpi.edu/release"],
     )
     maybe(

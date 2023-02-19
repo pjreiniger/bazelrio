@@ -1,6 +1,7 @@
 load("//dependencies/phoenixpro/23_0_1:deps.bzl", "setup_phoenixpro_23_0_1_dependencies")
 load("//dependencies/phoenixpro/23_0_4:deps.bzl", "setup_phoenixpro_23_0_4_dependencies")
 load("//dependencies/phoenixpro/23_0_5:deps.bzl", "setup_phoenixpro_23_0_5_dependencies")
+load("//dependencies/phoenixpro/23_0_8:deps.bzl", "setup_phoenixpro_23_0_8_dependencies")
 
 def setup_phoenixpro_dependencies(version):
     if version == None:
@@ -11,5 +12,7 @@ def setup_phoenixpro_dependencies(version):
         setup_phoenixpro_23_0_4_dependencies()
     elif version == "23.0.5":
         setup_phoenixpro_23_0_5_dependencies()
+    elif version == "23.0.8":
+        setup_phoenixpro_23_0_8_dependencies()
     else:
         fail("Unsupported version '{}'".format(version))
