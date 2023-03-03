@@ -2,6 +2,7 @@ load("//dependencies/wpilib/2023_1_1:deps.bzl", "setup_wpilib_2023_1_1_dependenc
 load("//dependencies/wpilib/2023_2_1:deps.bzl", "setup_wpilib_2023_2_1_dependencies")
 load("//dependencies/wpilib/2023_3_2:deps.bzl", "setup_wpilib_2023_3_2_dependencies")
 load("//dependencies/wpilib/2023_4_1:deps.bzl", "setup_wpilib_2023_4_1_dependencies")
+load("//dependencies/wpilib/2023_4_2:deps.bzl", "setup_wpilib_2023_4_2_dependencies")
 
 def setup_wpilib_dependencies(version):
     if version == None:
@@ -14,5 +15,7 @@ def setup_wpilib_dependencies(version):
         setup_wpilib_2023_3_2_dependencies()
     elif version == "2023.4.1":
         setup_wpilib_2023_4_1_dependencies()
+    elif version == "2023.4.2":
+        setup_wpilib_2023_4_2_dependencies()
     else:
         fail("Unsupported version '{}'".format(version))
